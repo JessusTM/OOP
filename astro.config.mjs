@@ -8,6 +8,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Programación Orientada a Objetos',
+      favicon: '/java.svg',
       plugins: [starlightRosePine()],
       locales: {
         root: { label: 'Español', lang: 'es' },
