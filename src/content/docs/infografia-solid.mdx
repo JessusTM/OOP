@@ -4,11 +4,13 @@ description: Infografía sobre los principios SOLID de diseño orientado a objet
 tableOfContents: false
 ---
 
+export const pdfUrl = `${import.meta.env.BASE_URL}/Infograf%C3%ADa-SOLID.pdf`;
+
 <object
   class="pdf-viewer"
-  data="/Infograf%C3%ADa-SOLID.pdf"
+  data={pdfUrl}
   type="application/pdf"
   aria-label="Infografía sobre los principios SOLID"
 >
-  <span>Tu navegador no puede mostrar el PDF incrustado. <a href="/Infograf%C3%ADa-SOLID.pdf">Abre la infografía en PDF</a>.</span>
+  <span>Tu navegador no puede mostrar el PDF incrustado. <a href={pdfUrl}>Abre la infografía en PDF</a>.</span>
 </object>

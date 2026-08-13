@@ -4,11 +4,13 @@ description: Reporte técnico sobre GitHub e IntelliJ IDEA.
 tableOfContents: false
 ---
 
+export const pdfUrl = `${import.meta.env.BASE_URL}/_RT_POO_01_GitHub_IntellijIDEA.pdf`;
+
 <object
   class="pdf-viewer"
-  data="/_RT_POO_01_GitHub_IntellijIDEA.pdf"
+  data={pdfUrl}
   type="application/pdf"
   aria-label="Reporte técnico 01 sobre GitHub e IntelliJ IDEA"
 >
-  <span>Tu navegador no puede mostrar el PDF incrustado. <a href="/_RT_POO_01_GitHub_IntellijIDEA.pdf">Abre el reporte en PDF</a>.</span>
+  <span>Tu navegador no puede mostrar el PDF incrustado. <a href={pdfUrl}>Abre el reporte en PDF</a>.</span>
 </object>
