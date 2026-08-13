@@ -8,7 +8,7 @@ Complementary learning resources for the **ICC490 Object-Oriented Programming co
 ![Astro](https://img.shields.io/badge/Astro-Website-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Configuration-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-**[Course Website]()**
+**[Course Website](https://jessustm.github.io/OOP/)**
 
 </div>
 
