@@ -6,16 +6,28 @@ dist/
 # dependencies
 node_modules/
 
+# editors and IDEs
+.vscode/
+.idea/
+
+# caches and test output
+.cache/
+coverage/
+
 # logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
 # environment variables
 .env
-.env.production
+.env.*
+!.env.example
+
+# TypeScript build output
+*.tsbuildinfo
 
 # macOS-specific files
 .DS_Store
