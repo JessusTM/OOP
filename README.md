@@ -1,49 +1,75 @@
-# Starlight Starter Kit: Basics
+<div align="center">
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+# **Object-Oriented Programming Notes**
 
+Complementary learning resources for the **ICC490 Object-Oriented Programming course at UFRO**.
+
+![Java](https://img.shields.io/badge/Java-Teaching%20Language-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Astro](https://img.shields.io/badge/Astro-Website-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-Configuration-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+**[Course Website]()**
+
+</div>
+
+## About
+
+This repository contains complementary educational material for the **ICC490 Object-Oriented Programming course at UFRO**.
+
+The website provides organized resources to support learning Object-Oriented Programming concepts using Java as the teaching language. It serves as a reference for reviewing theory, examples, reports, and additional visual material.
+
+## Contents
+
+- Java programming notes
+- Practical examples
+- Unit testing resources
+- Error handling concepts
+- File manipulation lessons
+- Technical reports
+- Supporting images
+- PDF documents and infographics
+
+## Built With
+
+- [Astro](https://astro.build/) - Web framework
+- [Starlight](https://starlight.astro.build/) - Documentation framework
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Project configuration
+- [Markdown and MDX](https://mdxjs.com/) - Educational content
+- [Java](https://www.java.com/) - Programming language used to teach Object-Oriented Programming
+
+## Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/JessusTM/OOP.git
 ```
-npm create astro@latest -- --template starlight
+
+Enter the project directory:
+
+```bash
+cd OOP
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Install the dependencies:
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+npm install
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Start the development server:
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+```bash
+npm run dev
+```
 
-Static assets, like favicons, can be placed in the `public/` directory.
+The website will be available at `http://localhost:4321`.
 
-## 🧞 Commands
+## Available Commands
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Build the production website |
+| `npm run preview` | Preview the production build locally |
+| `npm run astro` | Run Astro CLI commands |
