@@ -5,6 +5,8 @@ import starlightRosePine from 'starlight-theme-rose-pine'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://JessusTM.github.io',
+  base: '/OOP',
   integrations: [
     starlight({
       title: 'Programación Orientada a Objetos',
