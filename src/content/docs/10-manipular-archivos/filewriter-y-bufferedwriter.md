@@ -1,0 +1,118 @@
+---
+title: FileWriter y BufferedWriter
+sidebar:
+  order: 6000000
+parent: 10. Manipular Archivos
+nav_order: 6
+---
+
+## **6. Escritura de ficheros**
+
+En Java, para **escribir texto dentro de un archivo**, se utilizan clases como `FileWriter` y `BufferedWriter`. Ambas permiten enviar información desde el programa hacia un archivo, pero tienen diferencias en eficiencia y uso.
+
+---
+
+### **6.1 `FileWriter`: escritura carácter por carácter**
+
+La clase `FileWriter` en Java se utiliza para escribir datos en forma de **caracteres** a un archivo. A diferencia de trabajar con bytes, `FileWriter` maneja *caracteres*, que son unidades de texto como letras y símbolos.
+
+> *Esta clase convierte automáticamente estos caracteres a su representación binaria adecuada y los escribe en el archivo, por lo que no es la opción más rápida si se necesita escribir muchas líneas o grandes cantidades de texto.*
+
+> **Nota**: *Cada carácter se convierte internamente a una secuencia de bytes utilizando un conjunto de reglas conocido como codificación de caracteres (como `UTF-8`). `FileWriter` maneja esta conversión automáticamente, lo que facilita escribir texto directamente a un archivo sin preocuparse por la conversión manual de caracteres a bytes.*
+
+#### **6.1.1 Ejemplo**
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EscrituraBasica {
+    public static void main(String[] args) throws IOException {
+        FileWriter escritor = new FileWriter("salida.txt");
+        escritor.write("Hola mundo");
+        escritor.close();
+    }
+}
+```
+
+#### **6.1.2 Métodos**
+
+| **Método**            | **Descripción**                                 |
+| --------------------- | ----------------------------------------------- |
+| `write(String texto)` | Escribe texto al archivo carácter por carácter. |
+| `close()`             | Cierra el archivo y guarda los cambios.         |
+
+---
+
+### **6.2 `BufferedWriter`**
+
+La clase `BufferedWriter` en Java se utiliza para escribir datos en forma de caracteres a un archivo de manera **más eficiente** que utilizando directamente la clase `FileWriter`. Esto se logra mediante el uso de un **buffer interno**.
+
+> *Un buffer es una región de la memoria física que almacena temporalmente los datos mientras se trasladan de un lugar a otro. En el caso de `BufferedWriter`, el buffer almacena caracteres antes de escribirlos en el archivo.*
+
+#### **6.2.1 Ventajas**
+
+Sin buffer, cada llamada al método `write()` de `FileWriter` escribe directamente en el archivo, lo que puede resultar en múltiples accesos al disco, los cuales son costosos en términos de tiempo.
+
+`BufferedWriter` acumula los caracteres en un buffer y realiza una única operación de escritura cuando el buffer está lleno o cuando se cierra el `BufferedWriter`, **reduciendo así el número de operaciones de escritura y mejorando el rendimiento**.
+
+#### **6.2.2 `FileWriter` y `BufferedWriter`**
+
+`BufferedWriter` se utiliza en conjunto con `FileWriter` para agregar una capa de buffer entre el programa y el fichero. Con esto se obtiene que:
+
+* `FileWriter` sea responsable de **convertir los caracteres en bytes** y escribirlos en un archivo.
+* `BufferedWriter` **optimiza** este proceso mediante el uso de un buffer.
+
+Existen dos formas equivalentes de crear esta relación:
+
+##### **Creación por separado**
+
+Es posible instanciar primero el `FileWriter` y luego pasarlo como argumento al `BufferedWriter`.
+
+```java
+FileWriter fw = new FileWriter("archivo.txt");
+BufferedWriter bw = new BufferedWriter(fw);
+```
+
+##### **Creación en una sola línea**
+
+También se puede crear directamente el objeto `BufferedWriter` encapsulando la instancia de `FileWriter`.
+
+```java
+BufferedWriter bw = new BufferedWriter(new FileWriter("archivo.txt"));
+```
+
+> *Se pasa `FileWriter` como argumento ya que `BufferedWriter` necesita un objeto que implemente la interfaz `Writer` para saber dónde debe escribir finalmente los datos que almacena en el buffer. En este caso, el `FileWriter` es el encargado de manejar la escritura física en el archivo, por lo que se le entrega al `BufferedWriter` como destino final de los datos.*
+
+#### **6.2.3 Ejemplo**
+
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EscrituraEficiente {
+    public static void main(String[] args) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("salida.txt"))) {
+            escritor.write("Primera línea");
+            escritor.newLine(); // Salto de línea
+            escritor.write("Segunda línea");
+            escritor.flush(); // Fuerza el guardado inmediato
+        } catch (IOException e) {
+            System.out.println("Error al escribir: " + e.getMessage());
+        }
+    }
+}
+```
+
+#### **6.2.2 Métodos**
+
+| **Método**            | **Descripción**                                        |
+| --------------------- | ------------------------------------------------------ |
+| `write(String texto)` | Escribe texto al búfer.                                |
+| `newLine()`           | Inserta un salto de línea (equivalente a Enter).       |
+| `flush()`             | Fuerza el guardado del contenido del búfer al archivo. |
+| `close()`             | Cierra el archivo y guarda lo que falta.               |
+
+> *Es preferible usar `BufferedWriter` cuando se escribe más de una línea o grandes cantidades de texto.*
+
