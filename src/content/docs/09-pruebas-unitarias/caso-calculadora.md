@@ -1,0 +1,90 @@
+---
+title: Caso Calculadora
+sidebar:
+  order: 5000000
+parent: 09. Pruebas Unitarias
+nav_order: 5
+---
+
+### Caso de uso: división en una calculadora
+
+Se desea probar el funcionamiento de una clase `Calculadora` que implementa una operación de división entre dos números reales. Desde el punto de vista del testing, se identifican dos aspectos fundamentales que deben ser verificados:
+
+- La operación de división devuelva el resultado correcto para valores válidos.
+- El método lance una excepción adecuada cuando se intente dividir por cero al ser esta una operación inválida.
+
+> En este contexto se representa una prueba con sentido al evalúar el comportamiento esperado y el se tratan los errores críticos.
+
+---
+### Implementación de la clase a probar
+
+El siguiente código demostrativo contiene la clase `Calculadora` con el método `dividir`, el cual recibe dos números (`dividendo` y `divisor`) y retorna el resultado de la división. Si el divisor es igual a cero, lanza una excepción de tipo `ArithmeticException`.
+
+```java
+public class Calculadora {
+
+    public double dividir(double dividendo, double divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("No se puede dividir por cero...");
+        }
+        return dividendo / divisor;
+    }
+}
+```
+
+---
+### Estructura de una prueba unitaria con JUnit
+
+  - Inicialmente se utilizará la anotación **`@BeforeEach`** para ejecutar un método `setUp` antes de cada prueba, en este caso se usa para **crear una nueva instancia de la clase `Calculadora`** lo que evite repetir código en cada método de prueba y asegura que cada prueba se ejecute en un entorno limpio.
+
+  - Luego, para definir cada prueba se usará la anotación **@Test**, la cual marca el método como una prueba unitaria que será ejecutada automáticamente por el motor de pruebas de JUnit. En este ejemplo se definieron dos pruebas:
+  
+	  - Una para comprobar que la división se realiza correctamente (`testDivisionValida`).
+	  - Otra para comprobar que el método lanza una excepción al dividir por cero (`testDivisionPorCero`).
+
+  - Se utilizan dos tipos de aserciones:
+  
+	  - **`assertEquals(expected, actual, delta)`**: Verifica que el resultado sea igual al esperado, permitiendo un pequeño margen de error (`delta`) para operaciones con números decimales.
+	  - **`assertThrows(tipoDeExcepcion.class, lambda)`**: Verifica que se lance una excepción específica al ejecutar un bloque de código.
+
+```java
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculadoraTest {
+
+    private Calculadora calculadora;
+
+	  // Se ejecuta antes de cada prueba individual
+    @BeforeEach
+    void setUp() {
+        calculadora = new Calculadora();
+    }
+
+	  // Caso válido: 10 dividido por 2 debe ser 5
+    @Test
+    void testDivisionValida() {
+        double resultado = calculadora.dividir(10.0, 2.0);
+        assertEquals(5.0, resultado, 0.0001);
+    }
+
+	  // Caso inválido: división por cero debe lanzar excepción
+    @Test
+    void testDivisionPorCero() {
+        assertThrows(ArithmeticException.class, () -> {
+            calculadora.dividir(10.0, 0.0);
+        });
+    }
+}
+```
+
+---
+### Valor de los casos de prueba seleccionados
+
+Los casos de prueba definidos tienen valor porque cubren situaciones reales del uso de una calculadora:
+
+- Validan el cálculo correcto en condiciones normales.
+- Evalúan cómo el sistema maneja una operación inválida, previniendo errores en tiempo de ejecución.
+
+Probar estos escenarios asegura que el componente `Calculadora` se comportará de forma predecible tanto en condiciones esperadas como en situaciones límite, garantizando la fiabilidad del sistema completo.

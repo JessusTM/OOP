@@ -72,27 +72,27 @@ export default defineConfig({
         {
           label: '07. ArrayList',
           collapsed: true,
-          items: [{ autogenerate: { directory: '08-arraylist' } }],
+          items: [{ autogenerate: { directory: '07-arraylist' } }],
         },
         {
           label: '08. List',
           collapsed: true,
-          items: [{ autogenerate: { directory: '11-list' } }],
+          items: [{ autogenerate: { directory: '08-list' } }],
         },
         {
           label: '09. Pruebas unitarias',
           collapsed: true,
-          items: [{ autogenerate: { directory: '07-pruebas-unitarias' } }],
+          items: [{ autogenerate: { directory: '09-pruebas-unitarias' } }],
         },
         {
           label: '10. Gestión de errores',
           collapsed: true,
-          items: [{ autogenerate: { directory: '09-gestion-de-errores' } }],
+          items: [{ autogenerate: { directory: '10-gestion-de-errores' } }],
         },
         {
           label: '11. Manipulación de archivos',
           collapsed: true,
-          items: [{ autogenerate: { directory: '10-manipular-archivos' } }],
+          items: [{ autogenerate: { directory: '11-manipular-archivos' } }],
         },
         {
           label: 'INFOGRAFÍA - SOLID',
