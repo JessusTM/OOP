@@ -15,6 +15,28 @@ export default defineConfig({
       customCss: ['./src/styles/layout.css'],
       sidebar: [
         {
+          label: 'Reportes',
+          collapsed: true,
+          items: [
+            {
+              label: 'RT 01 - GitHub e IntelliJ IDEA',
+              slug: 'reportes/rt-01-github-intellij-idea',
+            },
+            {
+              label: 'RT 02 - Uso de GitHub',
+              slug: 'reportes/rt-02-uso-de-github',
+            },
+            {
+              label: 'RT 03 - Maven y JUnit',
+              slug: 'reportes/rt-03-maven-junit',
+            },
+            {
+              label: 'RT 04 - Unit Test y Error Handler',
+              slug: 'reportes/rt-04-unit-test-error-handler',
+            },
+          ],
+        },
+        {
           label: '01. Variables',
           collapsed: true,
           items: [{ autogenerate: { directory: '01-variables' } }],
@@ -68,6 +90,10 @@ export default defineConfig({
           label: '11. Manipulación de archivos',
           collapsed: true,
           items: [{ autogenerate: { directory: '10-manipular-archivos' } }],
+        },
+        {
+          label: 'INFOGRAFÍA - SOLID',
+          slug: 'infografia-solid',
         },
       ],
     }),
